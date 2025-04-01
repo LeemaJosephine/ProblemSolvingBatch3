@@ -1,0 +1,390 @@
+Day 1: Fundamentals and Time Complexity
+------
+
+Class code: https://github.com/LeemaJosephine/ProblemSolvingBatch3.git
+
+What is data?
+	Its a record/factual information
+
+What is Data structure?
+	Data that is available in warehouse will be unorganized, it's a raw data and not valid.
+To perform manipulation, we need to structure the data based on business requirement.
+
+Raw data -> Algorithm -> convert to code -> analyse 
+
+Time Complexity:
+----------------
+
+Time Analysis: 
+
+1. Big-O -> Mostly we will prepare algorithm in Big-O
+2. Big-Omega
+3. Big-Theta
+
+Rules to calculate complexity of algorithm:
+
+1. Arithmetic and Logical -> 1 unit
+2. Assignment -> 1 unit
+3. Read and write -> 1 unit
+4. Sequence of execution -> n unit of time
+
+Types of time complexity:
+-------------------------
+
+1. Constant time -> O(1) (order of 1)
+2. Linear time -> O(n)
+3. Logarithmic
+4. Linear Arithmetic 
+5. Quadratic
+6. Cubic
+7. Exponential
+8. Factorial
+
+Constant Time:
+-------------
+int a,b,c;
+a=10; b=20;
+c=a+b;
+sysout(c); --> time complexity -> 1 unit -> O(1) -> Constant time
+
+Linear Time:
+------------
+int a,b,c;
+a=10; b=20;
+c=a+b;
+int n=5;
+for(int i=0;i<=n;i++){
+
+	sysout(i);
+}  -> time complexity -> n unit -> O(n) -> Linear time 
+
+Loop run n times according to the n value entered, so it's O(n)
+
+Logarithmic: O(log n)
+---------------------
+	Writing algorithm to divide the problem to sub problem with same size.
+
+1. Binary search -> Divide element list /2
+2. Ternary search -> Divide element list /3
+
+Linear arithmetic: O(n log n)
+-----------------------------
+	Divide and conquere strategy
+	Divide the problem into sub problem and then merge them into single problem.
+
+E.g: Merge Sort
+
+Quadratic: O(n2) -> Order of n square
+-------------------------------------
+
+	for(int i=0; i<n;i++){  -> n times        n * n = n2
+		for(int j=0;j<n;j++){  - n times
+
+		}	
+	}
+
+
+Cubic: O(n3) -> Order of n cube
+-------------------------------
+	for(int i=0; i<n;i++){  -> n times        n * n *n= n3
+		for(int j=0;j<n;j++){  - n times
+			for(int k=0;k<n;k++){
+			}
+		}	
+	}
+
+Factorial -> O(n!)
+
+Exponential: 2n -> 2 pow n
+
+
+Practical Problem:
+------------------
+
+1. Prime or Not
+	
+	Number divided by 1 and itself
+
+	1. any number divisible by itself
+	2. prime number can only 2 factor
+
+Base case: 
+	1. num <=1 -> not a prime
+	2. start the loop from 2
+		for(int i=2;i<=Math.sqrt(num);i++){  -> checking upto sqrt of num -> instead of checking till n, we can check till sqrt(n) because a larger factor of n must be a multiple of smaller factor.
+			if(num % 1 ==0) 	
+				not a prime
+			}
+			prime
+		}
+	
+	
+2. Factorial of a number:
+
+	5 -> 1 * 2 * 3 * 4 * 5 = 120	
+	-> Multiplication of natural numbers
+
+Base case:
+	Not 0 and 1 
+
+3. Fibonacci:
+
+	E.g: Fibonacci series of 7 -> 0 1 1 2 3 5 8 
+
+First term -> 0
+Second term -> 1
+
+Next term -> 1 
+
+1) Get input from user  -> No of digits the series should have
+2) Start value -> 0
+3) Second value -> 1
+4) To the store next
+5) Loop
+
+
+4. Sum of digits
+
+123 -> 1 + 2 + 3 = 6
+
+
+sum += 123 % 10 -> reminder will be the last digit 
+num = 123/10 -> 12
+
+while(num!=0){
+
+sum += num %10;   -> 123%10 -> 3   // 12%10 -> 2  // 1 %10 -> 1 
+num = num /10;  -> 123/10 -> 12   // 12/10 -> 1  // 1/10 = 0 
+
+}
+
+
+Day 2: Array and Array manipulations
+-------------------------------------
+
+1. Binary Search on a sorted array
+
+	input: 	
+		1. No.of element in an array -> size of the array -> 5
+		2. Elements of the array -> 1 3 5 7 9 
+		3. Enter the element you want to search -> 7
+	
+	Output: Should return the index of the particular array
+	
+		index: 3
+
+Logic:
+	1. Divide an array into halves repeatedly util you get the target element.
+
+		Left pointer -> starting of the array
+		Right pointer -> ending of the array
+
+
+2. Remove duplicates:
+
+	Input:
+		1. No.of element -> size of the array -> 6
+		2. Elements of the array -> 1 1 2 2 3 4
+
+	Output: 
+		1 2 3 4
+
+Logic:
+
+	removeDuplicate(arr,szie)
+		int arr = new int[size];
+		arr[0]=1;
+		arr[j] -> j -> 0 -> arr[0] -> 2
+
+		Step 1: j  -> keeps tracking of the index where the unique elements should be stored. -> j =0
+		Step 2: Loop to check the current element is different from next element. -> arr[i] != arr[i+1]
+				-> If they are different element, it stores the current element arr[i] in arr[j], increment j
+
+	
+1 2 1 3 2 4
+
+sort -> 1 1 2 2 3 4
+
+3. 2 Arrays are compatible or not
+
+Input: 
+	1. size of 1st array
+	2. size of 2nd array
+	3. Elements of 1st array
+	4. Elements of 2nd array
+
+Output:
+	Compatible array or not
+
+array 1: 5 6 7 8
+array 2: 1 2 3 4
+
+
+	Two arrays are compatible when,
+		1. The size of both the arrays are same and
+		2. Each element of one set of array is greater than or equal to other set of the array
+
+Common check:
+	arr1.length == arr2.length -> return true
+
+Compatible check: arr1[i] >= arr2[i]  -> return true
+
+4. Rotate an array
+
+Input:
+	1. Size of the array -> 6
+	2. Elements of the array -> 1 2 3 4 5 6
+	3. Enter the position from where you want to start the rotate. -> k -> 2
+
+Output: 3 4 5 6 1 2
+
+Logic:
+
+1. Get the K value -> from which position the rotation should start
+	k = k%n; 
+
+2. Reverse first K position element (elements before K)	 -> 0 , k-1
+	->  1 2 3 4 5 6   -> 2 1 3 4 5 6
+
+3. Reverse the remaining elements from index k -> k , n-1
+	-> 2 1 3 4 5 6   -> 2 1 6 5 4 3
+
+4. Reverse the entire array:  -> 0, n-1
+	-> 2 1 6 5 4 3   -> 3 4 5 6 1 2
+
+5. Repeated Elements:
+
+Input:
+	1. Size of the array -> 5
+	2. Elements of the array: 1 1 2 3 3
+		
+Output: 1 3
+
+Logic:
+	1. Hashset 1 -> keep as it is
+	2. HashSet 2 -> repeated elements will be stored here
+
+Day 3:
+------
+
+String and String manipulation:
+-------------------------------
+
+String: Sequence of character
+
+2 ways:
+	1. String as Literal  -> String str ="Hello";
+				 String str1 ="Hello";  -> If the value is already available in constant pool it will not create again instead it will just 								reference. 
+
+	2. String as Object   -> String str = new String("Hello");
+				 String str1 = new String("Hello");  -> It will assign individual memory even if it's same data.
+
+
+1) Check if two strings are anagram 
+
+E.g: listen    silent   -> When the characters and the frequency of characters are same between two strings then we call them as anagram strings.
+
+
+Logic:
+
+	1. Convert the string to character array -> str.toCharArray(); -> "listen"  -> charArray[] ={'l','i','s','t','e','n'}
+								       -> "silent"  -> charArray1[] ={'s','i','l','e','n','t'}
+	2. Sort the char array -> {'l','i','s','t','e','n'}
+			       -> {'l','i','s','t','e','n'}
+	3. Compare the arrays -> Arrays.equls(charArray, charArray2) -> true
+
+2) String Compression:
+
+E.g: aaabbccccd -> len -10
+	
+     a3b2c4d1 -> len -> 8
+
+Logic: 
+	1. Create a new empty string to store the compression and a counter variable to count(default value=1) the character occurrence.
+	2. Iterate over the string, take each character and compare it with the next character
+		1. If the character matches, we will increment the counter value by 1.
+		2. Else, add the character and the count value to the compressed string and update the count variable to default value 1.
+
+aabbccd
+a2b2c2d
+
+3) Replace space with %20:
+
+	E.g: Hello World
+		O/p: Hello%20World
+
+Logic:
+	replaceAll(" ","%20");
+
+4) Find the first non-repeating character:
+
+	1. listen -> l 
+
+Logic:
+	1. 1st for loop to take the character to check -> i
+		-> inner loop -> to take the other characters of the string -> j
+		-> I != j
+		-> compare -> str.charAt(I) == str.charAt(j);
+			-> break loop.
+	
+5) Substring:
+
+Hello World 
+world -> return the index of the substring start as output
+
+
+Hello world
+world
+
+substring(6,10)
+
+i+str2.length()).equals(str2)
+
+5.equals(str2)
+
+
+substring(0,5) -> hello.equals(world) -> world
+substring(1,6) ello .equals(world) -> world
+substring(2,7) llo w.equals(world) -> fail
+substring(3,8)
+substring(4,9)
+substring(5,10)
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+	
+
+		
+	
+
+
+
+
+
+
+
+	
+	
+
+
+	
+
+
+
+
+
